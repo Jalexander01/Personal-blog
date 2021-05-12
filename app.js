@@ -39,7 +39,10 @@ app.get("/post", function(req, res){
 
 res.render('post');
 })
+app.get("/compose", function(req, res){
 
+res.render('compose');
+})
 
 
 
