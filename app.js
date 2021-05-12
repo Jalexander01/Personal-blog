@@ -19,6 +19,20 @@ app.get("/", function(req, res){
 res.render('home');
 })
 
+app.get("/about", function(req, res){
+
+res.render('about');
+})
+
+app.get("/compose", function(req, res){
+
+res.render('compose');
+})
+app.get("/post", function(req, res){
+
+res.render('post');
+})
+
 
 
 
