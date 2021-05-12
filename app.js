@@ -15,7 +15,13 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 
 //get function will send information to the brower at loading
+//Pages 
 app.get("/", function(req, res){
+
+res.render('home', {});
+})
+
+app.get("/home", function(req, res){
 
 res.render('home', {});
 })
