@@ -1,6 +1,7 @@
 //Headers
 const express = require("express");
 const bodyParser = require("body-parser");
+const ejs = require("ejs");
 const app = express();
 app.use(bodyParser.json());//?
 app.use(bodyParser.urlencoded({extended:true}));//use body-parser to grab the data from the html file we want
