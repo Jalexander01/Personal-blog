@@ -28,12 +28,12 @@ res.redirect("/");
 
 app.get("/about", function(req, res){
 
-res.render('about');
+res.render('about', {aboutContent: aboutContent});
 })
 
 app.get("/contact", function(req, res){
 
-res.render('contact');
+res.render('contact', {contactContent:contactContent});
 })
 app.get("/post", function(req, res){
 
