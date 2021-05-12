@@ -15,15 +15,15 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 
 //get function will send information to the brower at loading
-//Pages 
+//Pages
 app.get("/", function(req, res){
 
-res.render('home', {});
+res.render('home', {homeStartingContent:homeStartingContent});
 })
 
 app.get("/home", function(req, res){
 
-res.render('home', {});
+res.redirect("/");
 })
 
 app.get("/about", function(req, res){
@@ -31,9 +31,9 @@ app.get("/about", function(req, res){
 res.render('about');
 })
 
-app.get("/compose", function(req, res){
+app.get("/contact", function(req, res){
 
-res.render('compose');
+res.render('contact');
 })
 app.get("/post", function(req, res){
 
