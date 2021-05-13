@@ -25,6 +25,7 @@ res.render('home', {homeStartingContent:homeStartingContent});
 console.log("########################");
  globalArrayPosts.forEach((globalArrayPosts, i) => {
    console.log(globalArrayPosts);
+   console.log(globalArrayPosts.title);
  });
 
 
