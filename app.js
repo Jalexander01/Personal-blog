@@ -45,6 +45,20 @@ res.render('compose');
 })
 
 
+app.post("/compose", function(req, res){
+ let titleVar = req.body.titleInput;
+ let areaVar = req.body.textAreaInput;
+ let userInput = {title: titleVar, area: areaVar };
+
+  console.log(req.body);
+  console.log(userInput);
+
+  console.log("log object title: " + userInput.title);
+  console.log("log object area: " + userInput.area);
+
+
+
+ })
 
 
 app.listen(process.env.PORT || 3000, function(){
