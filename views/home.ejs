@@ -2,8 +2,10 @@
 
 <h1>Home</h1>
 <p><%=  homeStartingContentPage %></p>
- <% let jsonArray =  JSON.stringify(globalArrayPosts ) %>
-
- <% console.log("from homepage " + globalArrayPosts); %>
+ <!-- for (index = 0; index < globalArrayPosts.length; index++) -->
+ <% globalArrayPosts.forEach( function(globalArrayPost){ %>
+   <h1> <%= globalArrayPost.title %>   </h1>
+   <p>  <%= globalArrayPost.content %> </p>
+<%  })  %>
 
 <%- include('partials/footer'); -%>

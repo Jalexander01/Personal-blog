@@ -8,6 +8,7 @@ app.use(bodyParser.urlencoded({extended:true}));//use body-parser to grab the da
 app.set('view engine', 'ejs');//to use ejs with express
 app.use(express.static("public"));//use static files like style.css and js
 
+
 let globalArrayPosts = [];
 
 const homeStartingContent = "Lacus vel facilisis volutpat est velit egestas dui id ornare. Semper auctor neque vitae tempus quam. Sit amet cursus sit amet dictum sit amet justo. Viverra tellus in hac habitasse. Imperdiet proin fermentum leo vel orci porta. Donec ultrices tincidunt arcu non sodales neque sodales ut. Mattis molestie a iaculis at erat pellentesque adipiscing. Magnis dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Adipiscing elit ut aliquam purus sit amet luctus venenatis lectus. Ultrices vitae auctor eu augue ut lectus arcu bibendum at. Odio euismod lacinia at quis risus sed vulputate odio ut. Cursus mattis molestie a iaculis at erat pellentesque adipiscing.";
@@ -18,13 +19,14 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 //get function will send information to the brower at loading
 //Pages
 app.get("/", function(req, res){
-console.log("From app.get " + globalArrayPosts);
+
  res.render('home', {
    homeStartingContentPage: homeStartingContent,
-   globalArrayPosts: JSON.stringify(globalArrayPosts)
+   globalArrayPosts: globalArrayPosts
  });
+ // console.log(globalArrayPosts);
 
-console.log("########################");
+
 
 
 });
@@ -55,15 +57,13 @@ res.render('compose');
 
 app.post("/compose", function(req, res){
 
-
  const userInput = {
    title: req.body.titleInput,
-   area: req.body.textAreaInput };
+   content: req.body.textAreaInput };
+
+   console.log("+++++++++++++++++++++++++++++");
 
    globalArrayPosts.push(userInput);
-    let arrayTwo = JSON.stringify(globalArrayPosts);
-
-   // console.log("From app.post " + globalArrayPosts );
 
 //add the object to the global variable array so it can be used in the get
 //route
