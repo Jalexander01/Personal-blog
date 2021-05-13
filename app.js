@@ -20,6 +20,18 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 app.get("/", function(req, res){
 
 res.render('home', {homeStartingContent:homeStartingContent});
+
+
+console.log("########################");
+ globalArrayPosts.forEach((globalArrayPosts, i) => {
+   console.log(globalArrayPosts);
+ });
+
+
+
+
+
+
 })
 
 app.get("/home", function(req, res){
@@ -52,15 +64,16 @@ app.post("/compose", function(req, res){
  let userInput = {title: titleVar,
    area: areaVar };
 
-  console.log(req.body);
-  console.log(userInput);
+  // console.log(req.body);
+  // console.log(userInput);
 
-  console.log("log object title: " + userInput.title);
-  console.log("log object area: " + userInput.area);
+  // console.log("log object title: " + userInput.title);
+  // console.log("log object area: " + userInput.area);
 
 //add the object to the global variable array so it can be used in the get
 //route
-
+   globalArrayPosts.push(userInput);
+   res.redirect("/");
 
  })
 
