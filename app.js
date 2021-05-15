@@ -49,6 +49,8 @@ app.get("/post", function(req, res){
 
 res.render('post');
 })
+
+
 app.get("/compose", function(req, res){
 
 res.render('compose');
@@ -61,7 +63,7 @@ app.post("/compose", function(req, res){
    title: req.body.titleInput,
    content: req.body.textAreaInput };
 
-   console.log("+++++++++++++++++++++++++++++");
+   console.log("From app.post/compose");
 
    globalArrayPosts.push(userInput);
 
@@ -72,6 +74,21 @@ app.post("/compose", function(req, res){
 
  })
 
+ app.get("/posts/:anykey", function(req, res){
+
+ const m = req.params.anykey;
+  console.log(m);
+  globalArrayPosts.forEach( function(globalArrayPost){
+    console.log(globalArrayPost.title );
+    if (m === globalArrayPost.title ){
+      console.log("It's a match! ");
+    }else{
+      console.log("It's not a match.");
+    }
+     })
+
+
+ })
 
 app.listen(process.env.PORT || 3000, function(){
   console.log("Server started on port 3000")
