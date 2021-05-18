@@ -7,7 +7,7 @@ app.use(bodyParser.json());//?
 app.use(bodyParser.urlencoded({extended:true}));//use body-parser to grab the data from the html file we want
 app.set('view engine', 'ejs');//to use ejs with express
 app.use(express.static("public"));//use static files like style.css and js
-
+const _ = require('lodash');
 
 let globalArrayPosts = [];
 
@@ -77,10 +77,11 @@ app.post("/compose", function(req, res){
  app.get("/posts/:anykey", function(req, res){
 
  const m = req.params.anykey;
-  console.log(m);
+ _.lowerCase(m);
+   console.log(  _.lowerCase(m));
   globalArrayPosts.forEach( function(globalArrayPost){
-    console.log(globalArrayPost.title );
-    if (m === globalArrayPost.title ){
+    console.log( globalArrayPost.title );
+    if ( _.lowerCase(m) === _.lowerCase(globalArrayPost.title) ){
       console.log("It's a match! ");
     }else{
       console.log("It's not a match.");
