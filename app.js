@@ -86,6 +86,10 @@ app.post("/compose", function(req, res){
         titleVar: globalArrayPost.title,
         contentVar: globalArrayPost.content
       });
+      res.render('home', {
+        anykeyVar: _.lowerCase(m),
+
+      });
     }else{
 
     }
