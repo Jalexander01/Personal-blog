@@ -82,9 +82,12 @@ app.post("/compose", function(req, res){
   globalArrayPosts.forEach( function(globalArrayPost){
     console.log( globalArrayPost.title );
     if ( _.lowerCase(m) === _.lowerCase(globalArrayPost.title) ){
-      console.log("It's a match! ");
+      res.render('post', {
+        titleVar: globalArrayPost.title,
+        contentVar: globalArrayPost.content
+      });
     }else{
-      console.log("It's not a match.");
+
     }
      })
 

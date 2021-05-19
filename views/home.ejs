@@ -5,7 +5,7 @@
  <!-- for (index = 0; index < globalArrayPosts.length; index++) -->
  <% globalArrayPosts.forEach( function(globalArrayPost){ %>
    <h1> <%= globalArrayPost.title %>   </h1>
-   <p>  <%= globalArrayPost.content %> </p>
+   <p>  <%= globalArrayPost.content.substring(0,100) %> ...</p>
 <%  })  %>
 
 <%- include('partials/footer'); -%>
