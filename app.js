@@ -3,10 +3,12 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const ejs = require("ejs");
 const app = express();
-app.use(bodyParser.json());//?
-app.use(bodyParser.urlencoded({extended:true}));//use body-parser to grab the data from the html file we want
-app.set('view engine', 'ejs');//to use ejs with express
-app.use(express.static("public"));//use static files like style.css and js
+app.use(bodyParser.json()); //?
+app.use(bodyParser.urlencoded({
+  extended: true
+})); //use body-parser to grab the data from the html file we want
+app.set('view engine', 'ejs'); //to use ejs with express
+app.use(express.static("public")); //use static files like style.css and js
 const _ = require('lodash');
 
 let globalArrayPosts = [];
@@ -18,70 +20,75 @@ const contactContent = "Scelerisque eleifend donec pretium vulputate sapien. Rho
 
 //get function will send information to the brower at loading
 //Pages
-app.get("/", function(req, res){
+app.get("/", function (req, res) {
 
- res.render('home', {
-   homeStartingContentPage: homeStartingContent,
-   globalArrayPosts: globalArrayPosts
- });
- // console.log(globalArrayPosts);
+  res.render('home', {
+    homeStartingContentPage: homeStartingContent,
+    globalArrayPosts: globalArrayPosts
+  });
+  // console.log(globalArrayPosts);
 
 
 
 
 });
 
-app.get("/home", function(req, res){
+app.get("/home", function (req, res) {
 
-res.redirect("/");
+  res.redirect("/");
 })
 
-app.get("/about", function(req, res){
+app.get("/about", function (req, res) {
 
-res.render('about', {aboutContent: aboutContent});
+  res.render('about', {
+    aboutContent: aboutContent
+  });
 })
 
-app.get("/contact", function(req, res){
+app.get("/contact", function (req, res) {
 
-res.render('contact', {contactContent:contactContent});
+  res.render('contact', {
+    contactContent: contactContent
+  });
 })
-app.get("/post", function(req, res){
+app.get("/post", function (req, res) {
 
-res.render('post');
-})
-
-
-app.get("/compose", function(req, res){
-
-res.render('compose');
+  res.render('post');
 })
 
 
-app.post("/compose", function(req, res){
+app.get("/compose", function (req, res) {
 
- const userInput = {
-   title: req.body.titleInput,
-   content: req.body.textAreaInput };
+  res.render('compose');
+})
 
-   console.log("From app.post/compose");
 
-   globalArrayPosts.push(userInput);
+app.post("/compose", function (req, res) {
 
-//add the object to the global variable array so it can be used in the get
-//route
+  const userInput = {
+    title: req.body.titleInput,
+    content: req.body.textAreaInput
+  };
 
-   res.redirect("/");
+  console.log("From app.post/compose");
 
- })
+  globalArrayPosts.push(userInput);
 
- app.get("/posts/:anykey", function(req, res){
+  //add the object to the global variable array so it can be used in the get
+  //route
 
- const m = req.params.anykey;
- _.lowerCase(m);
-   console.log(  _.lowerCase(m));
-  globalArrayPosts.forEach( function(globalArrayPost){
-    console.log( globalArrayPost.title );
-    if ( _.lowerCase(m) === _.lowerCase(globalArrayPost.title) ){
+  res.redirect("/");
+
+})
+
+app.get("/posts/:anykey", function (req, res) {
+
+  const m = req.params.anykey;
+  _.lowerCase(m);
+  console.log(_.lowerCase(m));
+  globalArrayPosts.forEach(function (globalArrayPost) {
+    console.log(globalArrayPost.title);
+    if (_.lowerCase(m) === _.lowerCase(globalArrayPost.title)) {
       res.render('post', {
         titleVar: globalArrayPost.title,
         contentVar: globalArrayPost.content
@@ -90,14 +97,14 @@ app.post("/compose", function(req, res){
         anykeyVar: _.lowerCase(m),
 
       });
-    }else{
+    } else {
 
     }
-     })
+  })
 
 
- })
+})
 
-app.listen(process.env.PORT || 3000, function(){
+app.listen(process.env.PORT || 3000, function () {
   console.log("Server started on port 3000")
 });
